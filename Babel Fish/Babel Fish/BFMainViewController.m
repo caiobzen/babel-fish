@@ -17,6 +17,12 @@
 @property (strong, nonatomic) AVAudioPlayer *audioPlayer;
 @property (strong, nonatomic) AVSpeechSynthesizer *speechSynt;
 @property (copy  , nonatomic) NSString *currentPhrase;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activitySpinner;
+@property (weak, nonatomic) IBOutlet UIButton *otherTalkButton;
+@property (weak, nonatomic) IBOutlet UIButton *meTalkButton;
+@property (weak, nonatomic) IBOutlet UIView *activityView;
+@property (weak, nonatomic) IBOutlet UIView *recordingView;
 @end
 
 @implementation BFMainViewController
@@ -27,6 +33,7 @@
     [super viewDidLoad];
 
     [self prepareRecord];
+    [self roundSomeCorners];
 }
 
 - (void)prepareRecord {
@@ -189,10 +196,76 @@
     //[self speak:currentPhrase];
 }
 
+# pragma mark - visual coolness
+
+- (void)roundSomeCorners
+{
+    self.activitySpinner.layer.cornerRadius = 8;
+    self.otherTalkButton.layer.cornerRadius = 15;
+    self.otherTalkButton.transform = CGAffineTransformMakeRotation(M_PI);    
+    self.meTalkButton.layer.cornerRadius = 15;
+    
+    [self.activitySpinner startAnimating];
+    [self.activitySpinner setHidden:YES];
+    self.statusLabel.text = @"";
+    self.recordingView.alpha = 0;
+    self.recordingView.backgroundColor = [UIColor greenColor];
+}
+
+- (void)makeMeWait
+{
+    self.recordingView.alpha = 0;
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         self.activityView.transform = CGAffineTransformIdentity;
+                         
+                         self.statusLabel.alpha = 1;
+                         self.statusLabel.text = @"Translating";
+                     }];
+    
+    self.activitySpinner.hidden = NO;
+}
+
+- (void)makeThemWait
+{
+    self.recordingView.alpha = 0;
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         CGAffineTransform transform = CGAffineTransformMakeRotation(M_PI);
+                         self.activityView.transform = transform;
+                         
+                         self.statusLabel.alpha = 1;
+                         self.statusLabel.text = @"Translating";
+                     }];
+    
+    self.activitySpinner.hidden = NO;
+}
+
+- (void)stopWaiting
+{
+    self.recordingView.alpha = 0;
+    self.activitySpinner.hidden = YES;
+    
+    [UIView animateWithDuration:0.1
+                     animations:^{
+                         self.statusLabel.alpha = 0;
+                     }];
+    
+}
+
+- (void)showStartRecording
+{
+    [UIView animateWithDuration:0.4
+                     animations:^{
+                         self.recordingView.alpha = 1;
+                     }];
+}
+
 # pragma mark - Actions
 
 - (IBAction)startRecording:(UIButton *)sender
 {
+    [self showStartRecording];
     [self recordAudio];
 }
 
@@ -200,10 +273,13 @@
 {
     [self stopAudio];
     [self processAudio];
+    
+    [self makeThemWait];
 }
 
 - (IBAction)meStartRecording:(UIButton *)sender
 {
+    [self showStartRecording];
     [self recordAudio];
 }
 
@@ -211,6 +287,8 @@
 {
     [self stopAudio];
     [self processAudio];
+    
+    [self makeMeWait];
 }
 
 
@@ -262,6 +340,7 @@
         NSArray *alternatives = json[@"results"][0][@"alternatives"];
         NSString *target = [(NSDictionary *)alternatives.firstObject objectForKey:@"transcript"];
         
+        [self stopWaiting];
         self.currentPhrase = target;
     }
 }
