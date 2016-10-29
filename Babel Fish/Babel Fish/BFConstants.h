@@ -6,5 +6,5 @@
 //  Copyright © 2016 Isobar Hackathon. All rights reserved.
 //
 
-#define BFSpeechRecognitionKey  @"AIzaSyBQXIDyiEqjOSSoFdFGECMD-GUSzUgshg4"
-#define BFAudioSampleRate       16000
+#define BFGoogleApiKey      @"AIzaSyBQXIDyiEqjOSSoFdFGECMD-GUSzUgshg4"
+#define BFAudioSampleRate   16000

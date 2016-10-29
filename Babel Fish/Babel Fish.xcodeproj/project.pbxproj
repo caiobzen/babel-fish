@@ -10,6 +10,7 @@
 		21DCDCDC10A7B7064A92F9A4 /* libPods-Babel Fish.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9868AA9D5EBAB135FB103973 /* libPods-Babel Fish.a */; };
 		8216EC489D5E129A18DD95BE /* libPods-Babel FishTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F10E43D5879BE7B01EAEBD75 /* libPods-Babel FishTests.a */; };
 		9229574E1DC50FD800DA90C1 /* BFSettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9229574D1DC50FD800DA90C1 /* BFSettingsManager.m */; };
+		922957521DC525DB00DA90C1 /* BFNetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 922957511DC525DB00DA90C1 /* BFNetworkRequest.m */; };
 		924414D61DC4DD16004CDD4F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 924414D51DC4DD16004CDD4F /* main.m */; };
 		924414D91DC4DD16004CDD4F /* BFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 924414D81DC4DD16004CDD4F /* BFAppDelegate.m */; };
 		924414DC1DC4DD16004CDD4F /* BFMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 924414DB1DC4DD16004CDD4F /* BFMainViewController.m */; };
@@ -45,6 +46,8 @@
 		4F216E601482CB5032D79A0B /* Pods-Babel FishTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Babel FishTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Babel FishTests/Pods-Babel FishTests.release.xcconfig"; sourceTree = "<group>"; };
 		9229574C1DC50FD800DA90C1 /* BFSettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFSettingsManager.h; sourceTree = "<group>"; };
 		9229574D1DC50FD800DA90C1 /* BFSettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFSettingsManager.m; sourceTree = "<group>"; };
+		922957501DC525DB00DA90C1 /* BFNetworkRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFNetworkRequest.h; sourceTree = "<group>"; };
+		922957511DC525DB00DA90C1 /* BFNetworkRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFNetworkRequest.m; sourceTree = "<group>"; };
 		924414D11DC4DD16004CDD4F /* Babel Fish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Babel Fish.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		924414D51DC4DD16004CDD4F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		924414D71DC4DD16004CDD4F /* BFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFAppDelegate.h; sourceTree = "<group>"; };
@@ -110,13 +113,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9229574B1DC50FC100DA90C1 /* Model */ = {
+		9229574B1DC50FC100DA90C1 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
 				9229574C1DC50FD800DA90C1 /* BFSettingsManager.h */,
 				9229574D1DC50FD800DA90C1 /* BFSettingsManager.m */,
 			);
-			name = Model;
+			name = Manager;
+			sourceTree = "<group>";
+		};
+		9229574F1DC525BD00DA90C1 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				922957501DC525DB00DA90C1 /* BFNetworkRequest.h */,
+				922957511DC525DB00DA90C1 /* BFNetworkRequest.m */,
+			);
+			name = Network;
 			sourceTree = "<group>";
 		};
 		924414C81DC4DD16004CDD4F = {
@@ -147,7 +159,8 @@
 				928822B51DC4E4170095FEB4 /* BFConstants.h */,
 				924414D71DC4DD16004CDD4F /* BFAppDelegate.h */,
 				924414D81DC4DD16004CDD4F /* BFAppDelegate.m */,
-				9229574B1DC50FC100DA90C1 /* Model */,
+				9229574B1DC50FC100DA90C1 /* Manager */,
+				9229574F1DC525BD00DA90C1 /* Network */,
 				924415071DC4E11C004CDD4F /* View */,
 				924414E21DC4DD16004CDD4F /* LaunchScreen.storyboard */,
 				924414E51DC4DD16004CDD4F /* Info.plist */,
@@ -489,6 +502,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				922957521DC525DB00DA90C1 /* BFNetworkRequest.m in Sources */,
 				924414DC1DC4DD16004CDD4F /* BFMainViewController.m in Sources */,
 				928822C01DC501A00095FEB4 /* BFSettingsViewController.m in Sources */,
 				924414D91DC4DD16004CDD4F /* BFAppDelegate.m in Sources */,
