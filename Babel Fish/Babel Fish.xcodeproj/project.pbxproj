@@ -1,0 +1,528 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		924414D61DC4DD16004CDD4F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 924414D51DC4DD16004CDD4F /* main.m */; };
+		924414D91DC4DD16004CDD4F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 924414D81DC4DD16004CDD4F /* AppDelegate.m */; };
+		924414DC1DC4DD16004CDD4F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 924414DB1DC4DD16004CDD4F /* ViewController.m */; };
+		924414DF1DC4DD16004CDD4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 924414DD1DC4DD16004CDD4F /* Main.storyboard */; };
+		924414E11DC4DD16004CDD4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 924414E01DC4DD16004CDD4F /* Assets.xcassets */; };
+		924414E41DC4DD16004CDD4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 924414E21DC4DD16004CDD4F /* LaunchScreen.storyboard */; };
+		924414EF1DC4DD16004CDD4F /* Babel_FishTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 924414EE1DC4DD16004CDD4F /* Babel_FishTests.m */; };
+		924414FA1DC4DD16004CDD4F /* Babel_FishUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 924414F91DC4DD16004CDD4F /* Babel_FishUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		924414EB1DC4DD16004CDD4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 924414C91DC4DD16004CDD4F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 924414D01DC4DD16004CDD4F;
+			remoteInfo = "Babel Fish";
+		};
+		924414F61DC4DD16004CDD4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 924414C91DC4DD16004CDD4F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 924414D01DC4DD16004CDD4F;
+			remoteInfo = "Babel Fish";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		924414D11DC4DD16004CDD4F /* Babel Fish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Babel Fish.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		924414D51DC4DD16004CDD4F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		924414D71DC4DD16004CDD4F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		924414D81DC4DD16004CDD4F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		924414DA1DC4DD16004CDD4F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		924414DB1DC4DD16004CDD4F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		924414DE1DC4DD16004CDD4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		924414E01DC4DD16004CDD4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		924414E31DC4DD16004CDD4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		924414E51DC4DD16004CDD4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		924414EA1DC4DD16004CDD4F /* Babel FishTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Babel FishTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		924414EE1DC4DD16004CDD4F /* Babel_FishTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Babel_FishTests.m; sourceTree = "<group>"; };
+		924414F01DC4DD16004CDD4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		924414F51DC4DD16004CDD4F /* Babel FishUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Babel FishUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		924414F91DC4DD16004CDD4F /* Babel_FishUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Babel_FishUITests.m; sourceTree = "<group>"; };
+		924414FB1DC4DD16004CDD4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		924414CE1DC4DD16004CDD4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		924414E71DC4DD16004CDD4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		924414F21DC4DD16004CDD4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		924414C81DC4DD16004CDD4F = {
+			isa = PBXGroup;
+			children = (
+				924414D31DC4DD16004CDD4F /* Babel Fish */,
+				924414ED1DC4DD16004CDD4F /* Babel FishTests */,
+				924414F81DC4DD16004CDD4F /* Babel FishUITests */,
+				924414D21DC4DD16004CDD4F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		924414D21DC4DD16004CDD4F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				924414D11DC4DD16004CDD4F /* Babel Fish.app */,
+				924414EA1DC4DD16004CDD4F /* Babel FishTests.xctest */,
+				924414F51DC4DD16004CDD4F /* Babel FishUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		924414D31DC4DD16004CDD4F /* Babel Fish */ = {
+			isa = PBXGroup;
+			children = (
+				924414D71DC4DD16004CDD4F /* AppDelegate.h */,
+				924414D81DC4DD16004CDD4F /* AppDelegate.m */,
+				924414DA1DC4DD16004CDD4F /* ViewController.h */,
+				924414DB1DC4DD16004CDD4F /* ViewController.m */,
+				924414DD1DC4DD16004CDD4F /* Main.storyboard */,
+				924414E01DC4DD16004CDD4F /* Assets.xcassets */,
+				924414E21DC4DD16004CDD4F /* LaunchScreen.storyboard */,
+				924414E51DC4DD16004CDD4F /* Info.plist */,
+				924414D41DC4DD16004CDD4F /* Supporting Files */,
+			);
+			path = "Babel Fish";
+			sourceTree = "<group>";
+		};
+		924414D41DC4DD16004CDD4F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				924414D51DC4DD16004CDD4F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		924414ED1DC4DD16004CDD4F /* Babel FishTests */ = {
+			isa = PBXGroup;
+			children = (
+				924414EE1DC4DD16004CDD4F /* Babel_FishTests.m */,
+				924414F01DC4DD16004CDD4F /* Info.plist */,
+			);
+			path = "Babel FishTests";
+			sourceTree = "<group>";
+		};
+		924414F81DC4DD16004CDD4F /* Babel FishUITests */ = {
+			isa = PBXGroup;
+			children = (
+				924414F91DC4DD16004CDD4F /* Babel_FishUITests.m */,
+				924414FB1DC4DD16004CDD4F /* Info.plist */,
+			);
+			path = "Babel FishUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		924414D01DC4DD16004CDD4F /* Babel Fish */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 924414FE1DC4DD16004CDD4F /* Build configuration list for PBXNativeTarget "Babel Fish" */;
+			buildPhases = (
+				924414CD1DC4DD16004CDD4F /* Sources */,
+				924414CE1DC4DD16004CDD4F /* Frameworks */,
+				924414CF1DC4DD16004CDD4F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Babel Fish";
+			productName = "Babel Fish";
+			productReference = 924414D11DC4DD16004CDD4F /* Babel Fish.app */;
+			productType = "com.apple.product-type.application";
+		};
+		924414E91DC4DD16004CDD4F /* Babel FishTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 924415011DC4DD16004CDD4F /* Build configuration list for PBXNativeTarget "Babel FishTests" */;
+			buildPhases = (
+				924414E61DC4DD16004CDD4F /* Sources */,
+				924414E71DC4DD16004CDD4F /* Frameworks */,
+				924414E81DC4DD16004CDD4F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				924414EC1DC4DD16004CDD4F /* PBXTargetDependency */,
+			);
+			name = "Babel FishTests";
+			productName = "Babel FishTests";
+			productReference = 924414EA1DC4DD16004CDD4F /* Babel FishTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		924414F41DC4DD16004CDD4F /* Babel FishUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 924415041DC4DD16004CDD4F /* Build configuration list for PBXNativeTarget "Babel FishUITests" */;
+			buildPhases = (
+				924414F11DC4DD16004CDD4F /* Sources */,
+				924414F21DC4DD16004CDD4F /* Frameworks */,
+				924414F31DC4DD16004CDD4F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				924414F71DC4DD16004CDD4F /* PBXTargetDependency */,
+			);
+			name = "Babel FishUITests";
+			productName = "Babel FishUITests";
+			productReference = 924414F51DC4DD16004CDD4F /* Babel FishUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		924414C91DC4DD16004CDD4F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "Isobar Hackathon";
+				TargetAttributes = {
+					924414D01DC4DD16004CDD4F = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+					};
+					924414E91DC4DD16004CDD4F = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 924414D01DC4DD16004CDD4F;
+					};
+					924414F41DC4DD16004CDD4F = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 924414D01DC4DD16004CDD4F;
+					};
+				};
+			};
+			buildConfigurationList = 924414CC1DC4DD16004CDD4F /* Build configuration list for PBXProject "Babel Fish" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 924414C81DC4DD16004CDD4F;
+			productRefGroup = 924414D21DC4DD16004CDD4F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				924414D01DC4DD16004CDD4F /* Babel Fish */,
+				924414E91DC4DD16004CDD4F /* Babel FishTests */,
+				924414F41DC4DD16004CDD4F /* Babel FishUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		924414CF1DC4DD16004CDD4F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				924414E41DC4DD16004CDD4F /* LaunchScreen.storyboard in Resources */,
+				924414E11DC4DD16004CDD4F /* Assets.xcassets in Resources */,
+				924414DF1DC4DD16004CDD4F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		924414E81DC4DD16004CDD4F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		924414F31DC4DD16004CDD4F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		924414CD1DC4DD16004CDD4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				924414DC1DC4DD16004CDD4F /* ViewController.m in Sources */,
+				924414D91DC4DD16004CDD4F /* AppDelegate.m in Sources */,
+				924414D61DC4DD16004CDD4F /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		924414E61DC4DD16004CDD4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				924414EF1DC4DD16004CDD4F /* Babel_FishTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		924414F11DC4DD16004CDD4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				924414FA1DC4DD16004CDD4F /* Babel_FishUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		924414EC1DC4DD16004CDD4F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 924414D01DC4DD16004CDD4F /* Babel Fish */;
+			targetProxy = 924414EB1DC4DD16004CDD4F /* PBXContainerItemProxy */;
+		};
+		924414F71DC4DD16004CDD4F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 924414D01DC4DD16004CDD4F /* Babel Fish */;
+			targetProxy = 924414F61DC4DD16004CDD4F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		924414DD1DC4DD16004CDD4F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				924414DE1DC4DD16004CDD4F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		924414E21DC4DD16004CDD4F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				924414E31DC4DD16004CDD4F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		924414FC1DC4DD16004CDD4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		924414FD1DC4DD16004CDD4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		924414FF1DC4DD16004CDD4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Babel Fish/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.babel.fish.Babel-Fish";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		924415001DC4DD16004CDD4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Babel Fish/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.babel.fish.Babel-Fish";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		924415021DC4DD16004CDD4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Babel FishTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.babel.fish.Babel-FishTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Babel Fish.app/Babel Fish";
+			};
+			name = Debug;
+		};
+		924415031DC4DD16004CDD4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Babel FishTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.babel.fish.Babel-FishTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Babel Fish.app/Babel Fish";
+			};
+			name = Release;
+		};
+		924415051DC4DD16004CDD4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Babel FishUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.babel.fish.Babel-FishUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Babel Fish";
+			};
+			name = Debug;
+		};
+		924415061DC4DD16004CDD4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Babel FishUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.babel.fish.Babel-FishUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Babel Fish";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		924414CC1DC4DD16004CDD4F /* Build configuration list for PBXProject "Babel Fish" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				924414FC1DC4DD16004CDD4F /* Debug */,
+				924414FD1DC4DD16004CDD4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		924414FE1DC4DD16004CDD4F /* Build configuration list for PBXNativeTarget "Babel Fish" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				924414FF1DC4DD16004CDD4F /* Debug */,
+				924415001DC4DD16004CDD4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		924415011DC4DD16004CDD4F /* Build configuration list for PBXNativeTarget "Babel FishTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				924415021DC4DD16004CDD4F /* Debug */,
+				924415031DC4DD16004CDD4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		924415041DC4DD16004CDD4F /* Build configuration list for PBXNativeTarget "Babel FishUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				924415051DC4DD16004CDD4F /* Debug */,
+				924415061DC4DD16004CDD4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 924414C91DC4DD16004CDD4F /* Project object */;
+}
