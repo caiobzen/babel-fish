@@ -153,22 +153,38 @@
 
 -(void)setCurrentPhrase:(NSString *)currentPhrase
 {
-    // translate phrase
-    // https://www.googleapis.com/language/translate/v2/detect?key=YOUR_API_KEY&q=google+translate+is+fast
-    NSString *service = @"https://www.googleapis.com/language/translate/v2/detect";
-    service = [service stringByAppendingString:@"?key="];
-    service = [service stringByAppendingString:BFGoogleApiKey];
-
     NSMutableString *url = [NSMutableString string];
     [url appendString:@"https://www.googleapis.com/language/translate/v2/detect"];
     [url appendFormat:@"?key=%@", BFGoogleApiKey];
-    [url appendFormat:@"&q=%@", currentPhrase];
+    [url appendFormat:@"&q=%@", [currentPhrase stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
 
-    [BFNetworkRequest getWithURL:url handler:^(id o, NSError *error) {
+    [BFNetworkRequest getWithURL:url handler:^(id detectJSON, NSError *error) {
+        if(detectJSON) {
+            NSArray *alternatives = detectJSON[@"data"][@"detections"];
+            NSString *source = [(NSDictionary *)alternatives[0][0] objectForKey:@"language"];
+            
+            NSMutableString *translate = [NSMutableString string];
+            [translate appendString:@"https://www.googleapis.com/language/translate/v2"];
+            [translate appendFormat:@"?key=%@", BFGoogleApiKey];
+            [translate appendFormat:@"&source=%@", source];
+            [translate appendFormat:@"&target=%@", @"en"];
+            [translate appendFormat:@"&q=%@", [currentPhrase stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
+            
+            [BFNetworkRequest getWithURL:translate handler:^(id translateJSON, NSError *error) {
+                if(translateJSON) {
+                    NSString *phrase = translateJSON[@"data"][@"translations"][0][@"translatedText"];
+                    [self speak:phrase];
+                } else {
+                    NSLog(@"ERROR ON TRANSLATE");
+                }
+            }];
         
+        } else {
+            NSLog(@"ERROR ON DETECT");
+        }
     }];
     
-    [self speak:currentPhrase];
+    //[self speak:currentPhrase];
 }
 
 # pragma mark - Actions
