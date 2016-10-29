@@ -86,9 +86,9 @@
     
     NSString *mp3FileName = @"Mp3File";
     mp3FileName = [mp3FileName stringByAppendingString:@".mp3"];
-    NSString *mp3FilePath = [NSTemporaryDirectory() stringByAppendingPathComponent:mp3FileName];
+    NSString *mp3FilePath = [NSString stringWithFormat:@"%@/%@",[self soundFileDir],mp3FileName];
     
-    NSLog(@"%@", mp3FilePath);
+    NSLog(@"%@ to...\n%@/%@", filePath, mp3FilePath, mp3FileName);
     
     @try {
         int read, write;
@@ -104,16 +104,18 @@
         
         lame_t lame = lame_init();
         lame_set_in_samplerate(lame, 44100);
-        lame_set_VBR(lame, vbr_default);
+        lame_set_VBR(lame, vbr_off);
         lame_init_params(lame);
         
         do {
             read = (int)fread(pcm_buffer, 2*sizeof(short int), PCM_SIZE, pcm);
+            NSLog(@"Read %d",read);
             if (read == 0)
                 write = lame_encode_flush(lame, mp3_buffer, MP3_SIZE);
             else
                 write = lame_encode_buffer_interleaved(lame, pcm_buffer, read, mp3_buffer, MP3_SIZE);
             
+            NSLog(@"Writing %d to mp3 buffer.", write);
             fwrite(mp3_buffer, write, 1, mp3);
             
         } while (read != 0);
@@ -200,11 +202,23 @@
     [self processAudio];
 }
 
+- (IBAction)meStartRecording:(UIButton *)sender
+{
+    [self recordAudio];
+}
+
+- (IBAction)meStopRecording:(UIButton *)sender
+{
+    [self stopAudio];
+    [self processAudio];
+}
+
+
 # pragma mark - Networking inside the view controller, like a boss
 
 - (void)processAudio
 {
-    [self convertAudio];
+    //[self convertAudio];
 
     NSString *service = @"https:/speech.googleapis.com/v1beta1/speech:syncrecognize";
     service = [service stringByAppendingString:@"?key="];
@@ -256,9 +270,14 @@
 // Helpers
 //
 
-- (NSString *) soundFilePath {
+- (NSString*) soundFileDir {
     NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docsDir = dirPaths[0];
+    return docsDir;
+}
+
+- (NSString *) soundFilePath {
+    NSString *docsDir = [self soundFileDir];
     
     return [docsDir stringByAppendingPathComponent:@"sound.caf"];
 }

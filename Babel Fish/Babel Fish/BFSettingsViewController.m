@@ -13,6 +13,7 @@
 @interface BFSettingsViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 @property (weak  , nonatomic) IBOutlet UITextField *nameField;
 @property (weak  , nonatomic) IBOutlet UIPickerView *languagePickerView;
+@property (weak  , nonatomic) IBOutlet UIPickerView *otherLanguagePickerView;
 @property (strong, nonatomic) NSDictionary *allLanguages;
 @end
 
