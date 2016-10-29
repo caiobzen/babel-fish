@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BFNetworkRequest.h"
 
 @interface BFMainViewController : UIViewController
 
