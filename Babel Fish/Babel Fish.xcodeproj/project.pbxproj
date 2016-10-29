@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21DCDCDC10A7B7064A92F9A4 /* libPods-Babel Fish.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9868AA9D5EBAB135FB103973 /* libPods-Babel Fish.a */; };
+		8216EC489D5E129A18DD95BE /* libPods-Babel FishTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F10E43D5879BE7B01EAEBD75 /* libPods-Babel FishTests.a */; };
+		9229574E1DC50FD800DA90C1 /* BFSettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9229574D1DC50FD800DA90C1 /* BFSettingsManager.m */; };
 		924414D61DC4DD16004CDD4F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 924414D51DC4DD16004CDD4F /* main.m */; };
-		924414D91DC4DD16004CDD4F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 924414D81DC4DD16004CDD4F /* AppDelegate.m */; };
-		924414DC1DC4DD16004CDD4F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 924414DB1DC4DD16004CDD4F /* ViewController.m */; };
+		924414D91DC4DD16004CDD4F /* BFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 924414D81DC4DD16004CDD4F /* BFAppDelegate.m */; };
+		924414DC1DC4DD16004CDD4F /* BFMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 924414DB1DC4DD16004CDD4F /* BFMainViewController.m */; };
 		924414DF1DC4DD16004CDD4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 924414DD1DC4DD16004CDD4F /* Main.storyboard */; };
 		924414E11DC4DD16004CDD4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 924414E01DC4DD16004CDD4F /* Assets.xcassets */; };
 		924414E41DC4DD16004CDD4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 924414E21DC4DD16004CDD4F /* LaunchScreen.storyboard */; };
 		924414EF1DC4DD16004CDD4F /* Babel_FishTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 924414EE1DC4DD16004CDD4F /* Babel_FishTests.m */; };
 		924414FA1DC4DD16004CDD4F /* Babel_FishUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 924414F91DC4DD16004CDD4F /* Babel_FishUITests.m */; };
+		928822C01DC501A00095FEB4 /* BFSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 928822BF1DC501A00095FEB4 /* BFSettingsViewController.m */; };
+		BCD8F7F620066797A16DDDE4 /* libPods-Babel FishUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47BBD35C589019BAC9F250BF /* libPods-Babel FishUITests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,12 +40,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09B99509F0BBCA65AED72099 /* Pods-Babel FishTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Babel FishTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Babel FishTests/Pods-Babel FishTests.debug.xcconfig"; sourceTree = "<group>"; };
+		47BBD35C589019BAC9F250BF /* libPods-Babel FishUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Babel FishUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F216E601482CB5032D79A0B /* Pods-Babel FishTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Babel FishTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Babel FishTests/Pods-Babel FishTests.release.xcconfig"; sourceTree = "<group>"; };
+		9229574C1DC50FD800DA90C1 /* BFSettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFSettingsManager.h; sourceTree = "<group>"; };
+		9229574D1DC50FD800DA90C1 /* BFSettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFSettingsManager.m; sourceTree = "<group>"; };
 		924414D11DC4DD16004CDD4F /* Babel Fish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Babel Fish.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		924414D51DC4DD16004CDD4F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		924414D71DC4DD16004CDD4F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		924414D81DC4DD16004CDD4F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		924414DA1DC4DD16004CDD4F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		924414DB1DC4DD16004CDD4F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		924414D71DC4DD16004CDD4F /* BFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFAppDelegate.h; sourceTree = "<group>"; };
+		924414D81DC4DD16004CDD4F /* BFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFAppDelegate.m; sourceTree = "<group>"; };
+		924414DA1DC4DD16004CDD4F /* BFMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFMainViewController.h; sourceTree = "<group>"; };
+		924414DB1DC4DD16004CDD4F /* BFMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFMainViewController.m; sourceTree = "<group>"; };
 		924414DE1DC4DD16004CDD4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		924414E01DC4DD16004CDD4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		924414E31DC4DD16004CDD4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +61,15 @@
 		924414F51DC4DD16004CDD4F /* Babel FishUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Babel FishUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		924414F91DC4DD16004CDD4F /* Babel_FishUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Babel_FishUITests.m; sourceTree = "<group>"; };
 		924414FB1DC4DD16004CDD4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		928822B51DC4E4170095FEB4 /* BFConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFConstants.h; sourceTree = "<group>"; };
+		928822BE1DC501A00095FEB4 /* BFSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFSettingsViewController.h; sourceTree = "<group>"; };
+		928822BF1DC501A00095FEB4 /* BFSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFSettingsViewController.m; sourceTree = "<group>"; };
+		9868AA9D5EBAB135FB103973 /* libPods-Babel Fish.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Babel Fish.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B26A9A2A42F756C4E1D2915B /* Pods-Babel Fish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Babel Fish.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Babel Fish/Pods-Babel Fish.debug.xcconfig"; sourceTree = "<group>"; };
+		BBFB39BD460EC1625EF05F5E /* Pods-Babel Fish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Babel Fish.release.xcconfig"; path = "Pods/Target Support Files/Pods-Babel Fish/Pods-Babel Fish.release.xcconfig"; sourceTree = "<group>"; };
+		BEACC1F56E7C8B769B16316D /* Pods-Babel FishUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Babel FishUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Babel FishUITests/Pods-Babel FishUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F10E43D5879BE7B01EAEBD75 /* libPods-Babel FishTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Babel FishTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F21609E32B8B581CFF084D7B /* Pods-Babel FishUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Babel FishUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Babel FishUITests/Pods-Babel FishUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21DCDCDC10A7B7064A92F9A4 /* libPods-Babel Fish.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8216EC489D5E129A18DD95BE /* libPods-Babel FishTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +93,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCD8F7F620066797A16DDDE4 /* libPods-Babel FishUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A55B5DAC0376FAADF5FCE9C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9868AA9D5EBAB135FB103973 /* libPods-Babel Fish.a */,
+				F10E43D5879BE7B01EAEBD75 /* libPods-Babel FishTests.a */,
+				47BBD35C589019BAC9F250BF /* libPods-Babel FishUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9229574B1DC50FC100DA90C1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9229574C1DC50FD800DA90C1 /* BFSettingsManager.h */,
+				9229574D1DC50FD800DA90C1 /* BFSettingsManager.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		924414C81DC4DD16004CDD4F = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +126,8 @@
 				924414ED1DC4DD16004CDD4F /* Babel FishTests */,
 				924414F81DC4DD16004CDD4F /* Babel FishUITests */,
 				924414D21DC4DD16004CDD4F /* Products */,
+				A5FC6494216AF6C428BA197E /* Pods */,
+				6A55B5DAC0376FAADF5FCE9C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,14 +144,14 @@
 		924414D31DC4DD16004CDD4F /* Babel Fish */ = {
 			isa = PBXGroup;
 			children = (
-				924414D71DC4DD16004CDD4F /* AppDelegate.h */,
-				924414D81DC4DD16004CDD4F /* AppDelegate.m */,
-				924414DA1DC4DD16004CDD4F /* ViewController.h */,
-				924414DB1DC4DD16004CDD4F /* ViewController.m */,
-				924414DD1DC4DD16004CDD4F /* Main.storyboard */,
-				924414E01DC4DD16004CDD4F /* Assets.xcassets */,
+				928822B51DC4E4170095FEB4 /* BFConstants.h */,
+				924414D71DC4DD16004CDD4F /* BFAppDelegate.h */,
+				924414D81DC4DD16004CDD4F /* BFAppDelegate.m */,
+				9229574B1DC50FC100DA90C1 /* Model */,
+				924415071DC4E11C004CDD4F /* View */,
 				924414E21DC4DD16004CDD4F /* LaunchScreen.storyboard */,
 				924414E51DC4DD16004CDD4F /* Info.plist */,
+				924414E01DC4DD16004CDD4F /* Assets.xcassets */,
 				924414D41DC4DD16004CDD4F /* Supporting Files */,
 			);
 			path = "Babel Fish";
@@ -140,6 +183,47 @@
 			path = "Babel FishUITests";
 			sourceTree = "<group>";
 		};
+		924415071DC4E11C004CDD4F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				928822BD1DC501910095FEB4 /* Settings */,
+				928822BC1DC5018A0095FEB4 /* Main */,
+				924414DD1DC4DD16004CDD4F /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		928822BC1DC5018A0095FEB4 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				924414DA1DC4DD16004CDD4F /* BFMainViewController.h */,
+				924414DB1DC4DD16004CDD4F /* BFMainViewController.m */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		928822BD1DC501910095FEB4 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				928822BE1DC501A00095FEB4 /* BFSettingsViewController.h */,
+				928822BF1DC501A00095FEB4 /* BFSettingsViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		A5FC6494216AF6C428BA197E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B26A9A2A42F756C4E1D2915B /* Pods-Babel Fish.debug.xcconfig */,
+				BBFB39BD460EC1625EF05F5E /* Pods-Babel Fish.release.xcconfig */,
+				09B99509F0BBCA65AED72099 /* Pods-Babel FishTests.debug.xcconfig */,
+				4F216E601482CB5032D79A0B /* Pods-Babel FishTests.release.xcconfig */,
+				BEACC1F56E7C8B769B16316D /* Pods-Babel FishUITests.debug.xcconfig */,
+				F21609E32B8B581CFF084D7B /* Pods-Babel FishUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +231,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 924414FE1DC4DD16004CDD4F /* Build configuration list for PBXNativeTarget "Babel Fish" */;
 			buildPhases = (
+				646032BC5BE2F0C29FA83713 /* [CP] Check Pods Manifest.lock */,
 				924414CD1DC4DD16004CDD4F /* Sources */,
 				924414CE1DC4DD16004CDD4F /* Frameworks */,
 				924414CF1DC4DD16004CDD4F /* Resources */,
+				B9818C83649009348E55E8E0 /* [CP] Embed Pods Frameworks */,
+				63F85AB80E65B88A7AFE7262 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -164,9 +251,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 924415011DC4DD16004CDD4F /* Build configuration list for PBXNativeTarget "Babel FishTests" */;
 			buildPhases = (
+				FCB81B59ABCA0249036A0836 /* [CP] Check Pods Manifest.lock */,
 				924414E61DC4DD16004CDD4F /* Sources */,
 				924414E71DC4DD16004CDD4F /* Frameworks */,
 				924414E81DC4DD16004CDD4F /* Resources */,
+				FF97D9F6EECF2F7116F206D9 /* [CP] Embed Pods Frameworks */,
+				0AEC710A9D78F7E453B8617F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -182,9 +272,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 924415041DC4DD16004CDD4F /* Build configuration list for PBXNativeTarget "Babel FishUITests" */;
 			buildPhases = (
+				9EB8CFB0916032C3822DA24B /* [CP] Check Pods Manifest.lock */,
 				924414F11DC4DD16004CDD4F /* Sources */,
 				924414F21DC4DD16004CDD4F /* Frameworks */,
 				924414F31DC4DD16004CDD4F /* Resources */,
+				DF4CB149D707E47F7749BD13 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -202,6 +294,7 @@
 		924414C91DC4DD16004CDD4F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = BF;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Isobar Hackathon";
 				TargetAttributes = {
@@ -268,14 +361,139 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0AEC710A9D78F7E453B8617F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Babel FishTests/Pods-Babel FishTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		63F85AB80E65B88A7AFE7262 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Babel Fish/Pods-Babel Fish-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		646032BC5BE2F0C29FA83713 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9EB8CFB0916032C3822DA24B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B9818C83649009348E55E8E0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Babel Fish/Pods-Babel Fish-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF4CB149D707E47F7749BD13 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Babel FishUITests/Pods-Babel FishUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FCB81B59ABCA0249036A0836 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FF97D9F6EECF2F7116F206D9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Babel FishTests/Pods-Babel FishTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		924414CD1DC4DD16004CDD4F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				924414DC1DC4DD16004CDD4F /* ViewController.m in Sources */,
-				924414D91DC4DD16004CDD4F /* AppDelegate.m in Sources */,
+				924414DC1DC4DD16004CDD4F /* BFMainViewController.m in Sources */,
+				928822C01DC501A00095FEB4 /* BFSettingsViewController.m in Sources */,
+				924414D91DC4DD16004CDD4F /* BFAppDelegate.m in Sources */,
 				924414D61DC4DD16004CDD4F /* main.m in Sources */,
+				9229574E1DC50FD800DA90C1 /* BFSettingsManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +638,7 @@
 		};
 		924414FF1DC4DD16004CDD4F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B26A9A2A42F756C4E1D2915B /* Pods-Babel Fish.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Babel Fish/Info.plist";
@@ -431,6 +650,7 @@
 		};
 		924415001DC4DD16004CDD4F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BBFB39BD460EC1625EF05F5E /* Pods-Babel Fish.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Babel Fish/Info.plist";
@@ -442,6 +662,7 @@
 		};
 		924415021DC4DD16004CDD4F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09B99509F0BBCA65AED72099 /* Pods-Babel FishTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "Babel FishTests/Info.plist";
@@ -454,6 +675,7 @@
 		};
 		924415031DC4DD16004CDD4F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F216E601482CB5032D79A0B /* Pods-Babel FishTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "Babel FishTests/Info.plist";
@@ -466,6 +688,7 @@
 		};
 		924415051DC4DD16004CDD4F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BEACC1F56E7C8B769B16316D /* Pods-Babel FishUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "Babel FishUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -477,6 +700,7 @@
 		};
 		924415061DC4DD16004CDD4F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F21609E32B8B581CFF084D7B /* Pods-Babel FishUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "Babel FishUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -505,6 +729,7 @@
 				924415001DC4DD16004CDD4F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		924415011DC4DD16004CDD4F /* Build configuration list for PBXNativeTarget "Babel FishTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +738,7 @@
 				924415031DC4DD16004CDD4F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		924415041DC4DD16004CDD4F /* Build configuration list for PBXNativeTarget "Babel FishUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +747,7 @@
 				924415061DC4DD16004CDD4F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

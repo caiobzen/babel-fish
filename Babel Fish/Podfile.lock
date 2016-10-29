@@ -1,0 +1,172 @@
+PODS:
+  - YOLOKit (11.2.0):
+    - YOLOKit/all (= 11.2.0)
+    - YOLOKit/any (= 11.2.0)
+    - YOLOKit/array (= 11.2.0)
+    - YOLOKit/base (= 11.2.0)
+    - YOLOKit/chunk (= 11.2.0)
+    - YOLOKit/concat (= 11.2.0)
+    - YOLOKit/dict (= 11.2.0)
+    - YOLOKit/each (= 11.2.0)
+    - YOLOKit/extend (= 11.2.0)
+    - YOLOKit/find (= 11.2.0)
+    - YOLOKit/first (= 11.2.0)
+    - YOLOKit/flatMap (= 11.2.0)
+    - YOLOKit/flatten (= 11.2.0)
+    - YOLOKit/fmap (= 11.2.0)
+    - YOLOKit/get (= 11.2.0)
+    - YOLOKit/groupBy (= 11.2.0)
+    - YOLOKit/has (= 11.2.0)
+    - YOLOKit/indexOf (= 11.2.0)
+    - YOLOKit/inject (= 11.2.0)
+    - YOLOKit/join (= 11.2.0)
+    - YOLOKit/last (= 11.2.0)
+    - YOLOKit/map (= 11.2.0)
+    - YOLOKit/max (= 11.2.0)
+    - YOLOKit/min (= 11.2.0)
+    - YOLOKit/none (= 11.2.0)
+    - YOLOKit/partition (= 11.2.0)
+    - YOLOKit/pick (= 11.2.0)
+    - YOLOKit/pluck (= 11.2.0)
+    - YOLOKit/pmap (= 11.2.0)
+    - YOLOKit/pop (= 11.2.0)
+    - YOLOKit/push (= 11.2.0)
+    - YOLOKit/reduce (= 11.2.0)
+    - YOLOKit/reverse (= 11.2.0)
+    - YOLOKit/rotate (= 11.2.0)
+    - YOLOKit/sample (= 11.2.0)
+    - YOLOKit/select (= 11.2.0)
+    - YOLOKit/shift (= 11.2.0)
+    - YOLOKit/shuffle (= 11.2.0)
+    - YOLOKit/skip (= 11.2.0)
+    - YOLOKit/slice (= 11.2.0)
+    - YOLOKit/snip (= 11.2.0)
+    - YOLOKit/sort (= 11.2.0)
+    - YOLOKit/split (= 11.2.0)
+    - YOLOKit/transpose (= 11.2.0)
+    - YOLOKit/uniq (= 11.2.0)
+    - YOLOKit/unshift (= 11.2.0)
+    - YOLOKit/upTo (= 11.2.0)
+    - YOLOKit/without (= 11.2.0)
+  - YOLOKit/all (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/any (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/array (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/base (11.2.0)
+  - YOLOKit/chunk (11.2.0):
+    - YOLOKit/base
+    - YOLOKit/slice
+  - YOLOKit/concat (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/dict (11.2.0):
+    - YOLOKit/base
+    - YOLOKit/transpose
+  - YOLOKit/each (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/extend (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/find (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/first (11.2.0):
+    - YOLOKit/base
+    - YOLOKit/slice
+  - YOLOKit/flatMap (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/flatten (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/fmap (11.2.0):
+    - YOLOKit/base
+    - YOLOKit/map
+  - YOLOKit/get (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/groupBy (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/has (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/indexOf (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/inject (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/join (11.2.0):
+    - YOLOKit/base
+    - YOLOKit/pluck
+  - YOLOKit/last (11.2.0):
+    - YOLOKit/base
+    - YOLOKit/slice
+  - YOLOKit/map (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/max (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/min (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/none (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/partition (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/pick (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/pluck (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/pmap (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/pop (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/push (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/reduce (11.2.0):
+    - YOLOKit/base
+    - YOLOKit/last
+  - YOLOKit/reverse (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/rotate (11.2.0):
+    - YOLOKit/base
+    - YOLOKit/concat
+    - YOLOKit/skip
+    - YOLOKit/snip
+  - YOLOKit/sample (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/select (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/shift (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/shuffle (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/skip (11.2.0):
+    - YOLOKit/base
+    - YOLOKit/last
+  - YOLOKit/slice (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/snip (11.2.0):
+    - YOLOKit/base
+    - YOLOKit/slice
+  - YOLOKit/sort (11.2.0):
+    - YOLOKit/all
+    - YOLOKit/base
+    - YOLOKit/transpose
+  - YOLOKit/split (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/transpose (11.2.0):
+    - YOLOKit/base
+    - YOLOKit/each
+    - YOLOKit/max
+    - YOLOKit/select
+  - YOLOKit/uniq (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/unshift (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/upTo (11.2.0):
+    - YOLOKit/base
+  - YOLOKit/without (11.2.0):
+    - YOLOKit/base
+
+DEPENDENCIES:
+  - YOLOKit
+
+SPEC CHECKSUMS:
+  YOLOKit: 0cc0566dff3edb1e6e19f14c5ea2e49cdcc8862a
+
+PODFILE CHECKSUM: 3b1063a3ca804ee3da5f9d57b2daa9be19a55a93
+
+COCOAPODS: 1.0.1
