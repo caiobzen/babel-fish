@@ -21,6 +21,8 @@ In case this is not legally possible, I grant any entity the right to
 use this work for any purpose, without any conditions, unless such
 conditions are required by law.
 </string>
+			<key>License</key>
+			<string>Public Domain</string>
 			<key>Title</key>
 			<string>YOLOKit</string>
 			<key>Type</key>
