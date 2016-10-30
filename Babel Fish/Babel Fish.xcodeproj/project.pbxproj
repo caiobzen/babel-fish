@@ -10,6 +10,8 @@
 		21DCDCDC10A7B7064A92F9A4 /* libPods-Babel Fish.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9868AA9D5EBAB135FB103973 /* libPods-Babel Fish.a */; };
 		8216EC489D5E129A18DD95BE /* libPods-Babel FishTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F10E43D5879BE7B01EAEBD75 /* libPods-Babel FishTests.a */; };
 		8331EA061DC52C71007183DB /* lame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8331EA051DC52C71007183DB /* lame.framework */; };
+		920135771DC54E7E0030ABAA /* BFSpeechRecognition.m in Sources */ = {isa = PBXBuildFile; fileRef = 920135761DC54E7E0030ABAA /* BFSpeechRecognition.m */; };
+		9201357A1DC54F370030ABAA /* BFRecognitionRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 920135791DC54F370030ABAA /* BFRecognitionRequest.m */; };
 		9229574E1DC50FD800DA90C1 /* BFSettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9229574D1DC50FD800DA90C1 /* BFSettingsManager.m */; };
 		922957521DC525DB00DA90C1 /* BFNetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 922957511DC525DB00DA90C1 /* BFNetworkRequest.m */; };
 		924414D61DC4DD16004CDD4F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 924414D51DC4DD16004CDD4F /* main.m */; };
@@ -46,6 +48,10 @@
 		47BBD35C589019BAC9F250BF /* libPods-Babel FishUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Babel FishUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F216E601482CB5032D79A0B /* Pods-Babel FishTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Babel FishTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Babel FishTests/Pods-Babel FishTests.release.xcconfig"; sourceTree = "<group>"; };
 		8331EA051DC52C71007183DB /* lame.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = lame.framework; path = "mp3lame-for-iOS/lame.framework"; sourceTree = "<group>"; };
+		920135751DC54E7E0030ABAA /* BFSpeechRecognition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFSpeechRecognition.h; sourceTree = "<group>"; };
+		920135761DC54E7E0030ABAA /* BFSpeechRecognition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFSpeechRecognition.m; sourceTree = "<group>"; };
+		920135781DC54F370030ABAA /* BFRecognitionRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFRecognitionRequest.h; sourceTree = "<group>"; };
+		920135791DC54F370030ABAA /* BFRecognitionRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFRecognitionRequest.m; sourceTree = "<group>"; };
 		9229574C1DC50FD800DA90C1 /* BFSettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFSettingsManager.h; sourceTree = "<group>"; };
 		9229574D1DC50FD800DA90C1 /* BFSettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFSettingsManager.m; sourceTree = "<group>"; };
 		922957501DC525DB00DA90C1 /* BFNetworkRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFNetworkRequest.h; sourceTree = "<group>"; };
@@ -122,6 +128,10 @@
 			children = (
 				9229574C1DC50FD800DA90C1 /* BFSettingsManager.h */,
 				9229574D1DC50FD800DA90C1 /* BFSettingsManager.m */,
+				920135751DC54E7E0030ABAA /* BFSpeechRecognition.h */,
+				920135761DC54E7E0030ABAA /* BFSpeechRecognition.m */,
+				920135781DC54F370030ABAA /* BFRecognitionRequest.h */,
+				920135791DC54F370030ABAA /* BFRecognitionRequest.m */,
 			);
 			name = Manager;
 			sourceTree = "<group>";
@@ -525,7 +535,9 @@
 				922957521DC525DB00DA90C1 /* BFNetworkRequest.m in Sources */,
 				924414DC1DC4DD16004CDD4F /* BFMainViewController.m in Sources */,
 				928822C01DC501A00095FEB4 /* BFSettingsViewController.m in Sources */,
+				9201357A1DC54F370030ABAA /* BFRecognitionRequest.m in Sources */,
 				924414D91DC4DD16004CDD4F /* BFAppDelegate.m in Sources */,
+				920135771DC54E7E0030ABAA /* BFSpeechRecognition.m in Sources */,
 				924414D61DC4DD16004CDD4F /* main.m in Sources */,
 				9229574E1DC50FD800DA90C1 /* BFSettingsManager.m in Sources */,
 			);

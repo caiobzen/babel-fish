@@ -11,34 +11,37 @@
 #import <YOLOKit/YOLO.h>
 
 @interface BFSettingsViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
-@property (weak  , nonatomic) IBOutlet UITextField *nameField;
-@property (weak  , nonatomic) IBOutlet UIPickerView *languagePickerView;
-@property (weak  , nonatomic) IBOutlet UIPickerView *otherLanguagePickerView;
+@property (weak  , nonatomic) IBOutlet UIPickerView *myLocalePicker;
+@property (weak  , nonatomic) IBOutlet UIPickerView *yourLocalePicker;
 @property (strong, nonatomic) NSDictionary *allLanguages;
 @end
 
 @implementation BFSettingsViewController
 
+#pragma mark - View Lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.languagePickerView.delegate   = self;
-    self.languagePickerView.dataSource = self;
-    
-    NSLocale *locale = [BFSettingsManager settings].language;
-    
-    if(locale) {
-        NSInteger index = self.allLanguages.allValues.map(^(NSLocale *locale){
-            return locale.localeIdentifier;
-        }).indexOf(locale.localeIdentifier);
-   
-        [self.languagePickerView selectRow:index inComponent:0 animated:YES];
-    }
+
+    [self buildPickers];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)buildPickers
+{
+    NSString *myLocale = [BFSettingsManager settings].myLocale;
+    [self buildPicker:self.myLocalePicker withLocaleIdentifier:myLocale];
+
+    NSString *yourLocale = [BFSettingsManager settings].yourLocale;
+    [self buildPicker:self.yourLocalePicker withLocaleIdentifier:yourLocale];
+}
+
+- (void)buildPicker:(UIPickerView *)picker withLocaleIdentifier:(NSString *)identifier
+{
+    picker.delegate   = self;
+    picker.dataSource = self;
+
+    NSInteger index = [self indexOfIdentifier:identifier];
+    [picker selectRow:index inComponent:0 animated:YES];
 }
 
 # pragma mark - UIPickerViewDataSource
@@ -53,32 +56,51 @@
     return self.allLanguages.allKeys.count;
 }
 
-- (NSDictionary *)allLanguages
-{
-    if(!_allLanguages) {
-        _allLanguages = ([NSLocale availableLocaleIdentifiers] ?: @[]).map(^(NSString *language){
-            NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:language];
-            NSString *displayName = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier value:language];
-            
-            return @[displayName, locale];
-        }).dict;
-    }
-    
-    return _allLanguages;
-}
-
 # pragma mark - UIPickerViewDelegate
 
 - (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return self.allLanguages.allKeys[row];
+    return self.allLanguages.allKeys.sort[row];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    NSString *languageKey    = self.allLanguages.allKeys[row];
-    NSLocale *selectedLocale = self.allLanguages[languageKey];
-    [[BFSettingsManager settings] setLanguage:selectedLocale];
+    NSString *languageKey = self.allLanguages.allKeys.sort[row];
+    NSString *identifier  = self.allLanguages[languageKey];
+
+    if(pickerView == self.myLocalePicker) {
+        [BFSettingsManager settings].myLocale = identifier;
+        return;
+    }
+
+    if(pickerView == self.yourLocalePicker) {
+        [BFSettingsManager settings].yourLocale = identifier;
+        return;
+    }
+}
+
+# pragma mark - Accessors
+
+- (NSDictionary *)allLanguages
+{
+    if(!_allLanguages) {
+        _allLanguages = @{
+            @"Portuguese (Brazil)":@"pt",
+            @"English (US)":@"en"
+        };
+    }
+
+    return _allLanguages;
+}
+
+//
+// Helpers
+//
+
+- (NSInteger)indexOfIdentifier:(NSString *)identifier
+{
+    NSInteger index = self.allLanguages.allValues.indexOf(identifier);
+    return index != NSNotFound ? index : 0;
 }
 
 @end

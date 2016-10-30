@@ -21,4 +21,14 @@
     return settings;
 }
 
+- (NSString *)myLocale
+{
+    return @"en";
+}
+
+- (NSString *)yourLocale
+{
+    return @"pt";
+}
+
 @end

@@ -11,12 +11,12 @@
 #import <AVFoundation/AVFoundation.h>
 #import "lame/lame.h"
 #import "BFSettingsManager.h"
+#import "BFRecognitionRequest.h"
 
 @interface BFMainViewController () <AVAudioRecorderDelegate, AVAudioPlayerDelegate>
 @property (strong, nonatomic) AVAudioRecorder *audioRecorder;
 @property (strong, nonatomic) AVAudioPlayer *audioPlayer;
 @property (strong, nonatomic) AVSpeechSynthesizer *speechSynt;
-@property (copy  , nonatomic) NSString *currentPhrase;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activitySpinner;
 @property (weak, nonatomic) IBOutlet UIButton *otherTalkButton;
@@ -162,36 +162,42 @@
 
 -(void)setCurrentPhrase:(NSString *)currentPhrase
 {
-    NSMutableString *url = [NSMutableString string];
-    [url appendString:@"https://www.googleapis.com/language/translate/v2/detect"];
-    [url appendFormat:@"?key=%@", BFGoogleApiKey];
-    [url appendFormat:@"&q=%@", [currentPhrase stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
-
-    [BFNetworkRequest getWithURL:url handler:^(id detectJSON, NSError *error) {
-        if(detectJSON) {
-            NSArray *alternatives = detectJSON[@"data"][@"detections"];
-            NSString *source = [(NSDictionary *)alternatives[0][0] objectForKey:@"language"];
-            
-            NSMutableString *translate = [NSMutableString string];
-            [translate appendString:@"https://www.googleapis.com/language/translate/v2"];
-            [translate appendFormat:@"?key=%@", BFGoogleApiKey];
-            [translate appendFormat:@"&source=%@", source];
-            [translate appendFormat:@"&target=%@", @"en"];
-            [translate appendFormat:@"&q=%@", [currentPhrase stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
-            
-            [BFNetworkRequest getWithURL:translate handler:^(id translateJSON, NSError *error) {
-                if(translateJSON) {
-                    NSString *phrase = translateJSON[@"data"][@"translations"][0][@"translatedText"];
-                    [self speak:phrase];
-                } else {
-                    NSLog(@"ERROR ON TRANSLATE");
-                }
-            }];
-        
-        } else {
-            NSLog(@"ERROR ON DETECT");
-        }
-    }];
+//    [BFRecognitionRequest detectLanguage:currentPhrase handler:^(NSString *detectedLanguage) {
+//       [BFRecognitionRequest translatePhrase:currentPhrase from: to:detectedLanguage handler:^(NSString *) {
+//           
+//       }]
+//    }];
+    
+//    NSMutableString *url = [NSMutableString string];
+//    [url appendString:@"https://www.googleapis.com/language/translate/v2/detect"];
+//    [url appendFormat:@"?key=%@", BFGoogleApiKey];
+//    [url appendFormat:@"&q=%@", [currentPhrase stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
+//
+//    [BFNetworkRequest getWithURL:url handler:^(id detectJSON, NSError *error) {
+//        if(detectJSON) {
+//            NSArray *alternatives = detectJSON[@"data"][@"detections"];
+//            NSString *source = [(NSDictionary *)alternatives[0][0] objectForKey:@"language"];
+//            
+//            NSMutableString *translate = [NSMutableString string];
+//            [translate appendString:@"https://www.googleapis.com/language/translate/v2"];
+//            [translate appendFormat:@"?key=%@", BFGoogleApiKey];
+//            [translate appendFormat:@"&source=%@", source];
+//            [translate appendFormat:@"&target=%@", @"en"];
+//            [translate appendFormat:@"&q=%@", [currentPhrase stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
+//            
+//            [BFNetworkRequest getWithURL:translate handler:^(id translateJSON, NSError *error) {
+//                if(translateJSON) {
+//                    NSString *phrase = translateJSON[@"data"][@"translations"][0][@"translatedText"];
+//                    [self speak:phrase];
+//                } else {
+//                    NSLog(@"ERROR ON TRANSLATE");
+//                }
+//            }];
+//        
+//        } else {
+//            NSLog(@"ERROR ON DETECT");
+//        }
+//    }];
     
     //[self speak:currentPhrase];
 }
@@ -272,8 +278,10 @@
 - (IBAction)stopRecording:(UIButton *)sender
 {
     [self stopAudio];
-    [self processAudio];
     
+    NSString *fromLanguage = [BFSettingsManager settings].yourLocale;
+    NSString *toLanguage   = [BFSettingsManager settings].myLocale;
+    [self processAudio:fromLanguage to:toLanguage];
     [self makeThemWait];
 }
 
@@ -286,30 +294,28 @@
 - (IBAction)meStopRecording:(UIButton *)sender
 {
     [self stopAudio];
-    [self processAudio];
-    
+
+    NSString *fromLanguage = [BFSettingsManager settings].myLocale;
+    NSString *toLanguage   = [BFSettingsManager settings].yourLocale;
+    [self processAudio:fromLanguage to:toLanguage];
     [self makeMeWait];
 }
 
-
 # pragma mark - Networking inside the view controller, like a boss
 
-- (void)processAudio
+- (void)processAudio:(NSString *)fromLanguage to:(NSString *)toLanguage
 {
     //[self convertAudio];
-
     NSString *service = @"https:/speech.googleapis.com/v1beta1/speech:syncrecognize";
     service = [service stringByAppendingString:@"?key="];
     service = [service stringByAppendingString:BFGoogleApiKey];
     
-    NSLocale *currentLocale = [BFSettingsManager settings].language;
-    NSString *languageCode  = [currentLocale displayNameForKey:NSLocaleCountryCode value:currentLocale] ?: @"pt-BR";
     NSData *audioData       = [NSData dataWithContentsOfFile:[self soundFilePath]];
     
     NSDictionary *configRequest = @{
         @"encoding"         : @"LINEAR16",
         @"sampleRate"       : @(BFAudioSampleRate),
-        @"languageCode"     : languageCode,
+        @"languageCode"     : fromLanguage,
         @"maxAlternatives"  : @30
     };
     
@@ -317,8 +323,8 @@
         @"content" : [audioData base64EncodedStringWithOptions:0]
     };
     NSDictionary *requestDictionary = @{
-        @"config":configRequest,
-        @"audio":audioRequest
+        @"config"   : configRequest,
+        @"audio"    : audioRequest
     };
     
     NSError *error;
@@ -327,11 +333,19 @@
                                                             error:&error];
 
     [BFNetworkRequest postWithURL:service data:requestData handler:^(id response, NSError *error) {
-        if (!error) {
-            [self process:response];
+        if (!error && response) {
+//            [self process:response];
+            if(response) {
+                NSArray *alternatives = response[@"results"][0][@"alternatives"];
+                NSString *target = [(NSDictionary *)alternatives.firstObject objectForKey:@"transcript"];
+                [BFRecognitionRequest translatePhrase:target from:fromLanguage to:toLanguage handler:^(NSString *translatedPhrase) {
+                    [self speak:translatedPhrase];
+                }];
+            }
+        } else {
+            NSLog(@"ERROR: %@", error.localizedDescription);
         }
     }];
-
 }
 
 - (void)process:(NSDictionary *)json

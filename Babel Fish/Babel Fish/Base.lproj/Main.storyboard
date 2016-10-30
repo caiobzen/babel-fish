@@ -126,8 +126,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="languagePickerView" destination="lGe-GM-ehc" id="3nw-Tq-RJe"/>
-                        <outlet property="otherLanguagePickerView" destination="AXX-bn-s4Y" id="cZD-2y-Ceh"/>
+                        <outlet property="myLocalePicker" destination="lGe-GM-ehc" id="3nw-Tq-RJe"/>
+                        <outlet property="yourLocalePicker" destination="AXX-bn-s4Y" id="cZD-2y-Ceh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yuV-Ww-6xp" userLabel="First Responder" sceneMemberID="firstResponder"/>

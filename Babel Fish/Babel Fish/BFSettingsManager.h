@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface BFSettingsManager : NSObject
-@property (strong, nonatomic) NSLocale *language;
+@property (strong, nonatomic) NSString *myLocale;
+@property (strong, nonatomic) NSString *yourLocale;
 
 + (instancetype)settings;
 
