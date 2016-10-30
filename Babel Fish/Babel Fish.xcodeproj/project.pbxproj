@@ -12,6 +12,7 @@
 		8331EA061DC52C71007183DB /* lame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8331EA051DC52C71007183DB /* lame.framework */; };
 		920135771DC54E7E0030ABAA /* BFSpeechRecognition.m in Sources */ = {isa = PBXBuildFile; fileRef = 920135761DC54E7E0030ABAA /* BFSpeechRecognition.m */; };
 		9201357A1DC54F370030ABAA /* BFRecognitionRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 920135791DC54F370030ABAA /* BFRecognitionRequest.m */; };
+		9201357C1DC57A440030ABAA /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9201357B1DC57A440030ABAA /* Speech.framework */; };
 		9229574E1DC50FD800DA90C1 /* BFSettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9229574D1DC50FD800DA90C1 /* BFSettingsManager.m */; };
 		922957521DC525DB00DA90C1 /* BFNetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 922957511DC525DB00DA90C1 /* BFNetworkRequest.m */; };
 		924414D61DC4DD16004CDD4F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 924414D51DC4DD16004CDD4F /* main.m */; };
@@ -52,6 +53,7 @@
 		920135761DC54E7E0030ABAA /* BFSpeechRecognition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFSpeechRecognition.m; sourceTree = "<group>"; };
 		920135781DC54F370030ABAA /* BFRecognitionRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFRecognitionRequest.h; sourceTree = "<group>"; };
 		920135791DC54F370030ABAA /* BFRecognitionRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFRecognitionRequest.m; sourceTree = "<group>"; };
+		9201357B1DC57A440030ABAA /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
 		9229574C1DC50FD800DA90C1 /* BFSettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFSettingsManager.h; sourceTree = "<group>"; };
 		9229574D1DC50FD800DA90C1 /* BFSettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFSettingsManager.m; sourceTree = "<group>"; };
 		922957501DC525DB00DA90C1 /* BFNetworkRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFNetworkRequest.h; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9201357C1DC57A440030ABAA /* Speech.framework in Frameworks */,
 				8331EA061DC52C71007183DB /* lame.framework in Frameworks */,
 				21DCDCDC10A7B7064A92F9A4 /* libPods-Babel Fish.a in Frameworks */,
 			);
@@ -115,6 +118,7 @@
 		6A55B5DAC0376FAADF5FCE9C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9201357B1DC57A440030ABAA /* Speech.framework */,
 				8331EA051DC52C71007183DB /* lame.framework */,
 				9868AA9D5EBAB135FB103973 /* libPods-Babel Fish.a */,
 				F10E43D5879BE7B01EAEBD75 /* libPods-Babel FishTests.a */,
@@ -328,6 +332,7 @@
 				TargetAttributes = {
 					924414D01DC4DD16004CDD4F = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = TL76Q6ELX9;
 						ProvisioningStyle = Automatic;
 					};
 					924414E91DC4DD16004CDD4F = {
@@ -687,6 +692,7 @@
 			baseConfigurationReference = B26A9A2A42F756C4E1D2915B /* Pods-Babel Fish.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = TL76Q6ELX9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/mp3lame-for-iOS",
@@ -704,6 +710,7 @@
 			baseConfigurationReference = BBFB39BD460EC1625EF05F5E /* Pods-Babel Fish.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = TL76Q6ELX9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/mp3lame-for-iOS",

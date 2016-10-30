@@ -6,17 +6,24 @@
 //  Copyright © 2016 Isobar Hackathon. All rights reserved.
 //
 
-#import "BFConstants.h"
 #import "BFMainViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import <Speech/Speech.h>
+#import "BFConstants.h"
 #import "lame/lame.h"
 #import "BFSettingsManager.h"
 #import "BFRecognitionRequest.h"
 
-@interface BFMainViewController () <AVAudioRecorderDelegate, AVAudioPlayerDelegate>
+@interface BFMainViewController () <AVAudioRecorderDelegate, AVAudioPlayerDelegate, SFSpeechRecognizerDelegate, SFSpeechRecognitionTaskDelegate, AVCaptureAudioDataOutputSampleBufferDelegate>
 @property (strong, nonatomic) AVAudioRecorder *audioRecorder;
 @property (strong, nonatomic) AVAudioPlayer *audioPlayer;
 @property (strong, nonatomic) AVSpeechSynthesizer *speechSynt;
+@property (strong, nonatomic) AVAudioEngine *audioEngine;
+@property (strong, nonatomic) SFSpeechRecognitionTask *recognitionTask;
+@property (strong, nonatomic) SFSpeechAudioBufferRecognitionRequest *recognitionRequest;
+@property (nonatomic, strong) AVCaptureSession *capture;
+@property (nonatomic, strong) SFSpeechAudioBufferRecognitionRequest *speechRequest;
+
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activitySpinner;
 @property (weak, nonatomic) IBOutlet UIButton *otherTalkButton;
@@ -37,49 +44,181 @@
 }
 
 - (void)prepareRecord {
-    NSURL *soundFileURL = [NSURL fileURLWithPath:[self soundFilePath]];
-    NSDictionary *recordSettings = @{
-        AVEncoderAudioQualityKey    : @(AVAudioQualityMin),
-        AVEncoderBitRateKey         : @16,
-        AVNumberOfChannelsKey       : @1,
-        AVSampleRateKey             : @(BFAudioSampleRate)
-    };
 
-    NSError *error;
-    _audioRecorder = [[AVAudioRecorder alloc] initWithURL:soundFileURL
-                                                 settings:recordSettings
-                                                    error:&error];
-    if (error) {
-        NSLog(@"error: %@", error.localizedDescription);
-    }
+    [SFSpeechRecognizer requestAuthorization:^(SFSpeechRecognizerAuthorizationStatus status) {
+        switch(status) {
+            case SFSpeechRecognizerAuthorizationStatusAuthorized: NSLog(@"Let do it"); break;
+            case SFSpeechRecognizerAuthorizationStatusDenied: NSLog(@"Naah"); break;
+            case SFSpeechRecognizerAuthorizationStatusNotDetermined: NSLog(@"???"); break;
+            case SFSpeechRecognizerAuthorizationStatusRestricted: NSLog(@"Don't touch me"); break;
+        }
+    }];
+//    NSURL *soundFileURL = [NSURL fileURLWithPath:[self soundFilePath]];
+//    NSDictionary *recordSettings = @{
+//        AVEncoderAudioQualityKey    : @(AVAudioQualityMin),
+//        AVEncoderBitRateKey         : @16,
+//        AVNumberOfChannelsKey       : @1,
+//        AVSampleRateKey             : @(BFAudioSampleRate)
+//    };
+//
+//    NSError *error;
+//    _audioRecorder = [[AVAudioRecorder alloc] initWithURL:soundFileURL
+//                                                 settings:recordSettings
+//                                                    error:&error];
+//    if (error) {
+//        NSLog(@"error: %@", error.localizedDescription);
+//    }
+}
+
+- (void)speechRecognizer:(SFSpeechRecognizer *)speechRecognizer availabilityDidChange:(BOOL)available
+{
+    NSLog(@"Available: %@", available ? @"YES" : @"NO");
 }
 
 # pragma mark - Audio Processing
 
-- (void)recordAudio {
-    [self stopAudio];
-    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
-    [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
-    [_audioRecorder record];
+- (void)recordAudio:(NSString *)language speakIn:(NSString *)speakLanguage {
+    [SFSpeechRecognizer requestAuthorization:^(SFSpeechRecognizerAuthorizationStatus status) {
+        if (status == SFSpeechRecognizerAuthorizationStatusAuthorized){
+            NSLocale *local =[[NSLocale alloc] initWithLocaleIdentifier:language];
+            SFSpeechRecognizer *sf =[[SFSpeechRecognizer alloc] initWithLocale:local];
+            self.speechRequest = [[SFSpeechAudioBufferRecognitionRequest alloc] init];
+            [sf recognitionTaskWithRequest:self.speechRequest resultHandler:^(SFSpeechRecognitionResult * _Nullable result, NSError * _Nullable error) {
+                       [BFRecognitionRequest translatePhrase:result.bestTranscription.formattedString from:language to:speakLanguage handler:^(NSString *translated) {
+                           [self speak:translated in:language];
+                       }];
+                //NSLog(@"%@", result.bestTranscription);
+            }];
+            // should call startCapture method in main queue or it may crash
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self startCapture];
+            });
+        }
+    }];
+
+//    [self stopAudio];
+//    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+//    [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+//    [audioSession setMode:AVAudioSessionModeMeasurement error:nil];
+//    [audioSession setActive:true error:nil];
+//
+//    self.recognitionRequest = [SFSpeechAudioBufferRecognitionRequest new];
+//    self.recognitionRequest.shouldReportPartialResults = YES;
+//
+//    NSLocale *locale = [NSLocale localeWithLocaleIdentifier:language];
+//    SFSpeechRecognizer *recognizer = [[SFSpeechRecognizer alloc] initWithLocale:locale];
+//
+//    __block AVAudioInputNode *inputNode = self.audioEngine.inputNode;
+//    __weak __typeof(self) welf = self;
+//    self.recognitionTask = [recognizer recognitionTaskWithRequest:self.recognitionRequest
+//                                                    resultHandler:^(SFSpeechRecognitionResult * _Nullable result, NSError * _Nullable error) {
+//
+//                                                        if(result) {
+//                                                            NSLog(@"Translate %@", result.bestTranscription);
+//                                                        }
+//
+//                                                        if(!error) {
+//                                                            [welf.audioEngine stop];
+//                                                            welf.recognitionRequest = nil;
+//                                                            welf.recognitionTask = nil;
+//                                                            [inputNode removeTapOnBus:0];
+//
+//                                                        }
+//    }];
+//
+//    AVAudioFormat *recordingFormat = [inputNode outputFormatForBus:0];
+//    [inputNode installTapOnBus:0 bufferSize:1024
+//                        format:recordingFormat
+//                         block:^(AVAudioPCMBuffer * _Nonnull buffer, AVAudioTime * _Nonnull when) {
+//                             [welf.recognitionRequest appendAudioPCMBuffer:buffer];
+//                         }];
+//    [self.audioEngine prepare];
+//    [self.audioEngine startAndReturnError:nil];
+    
+    //[_audioRecorder record];
 }
 
-- (IBAction)playAudio:(id)sender {
-    [self stopAudio];
-    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
-    [audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
+- (void)speechRecognitionTask:(SFSpeechRecognitionTask *)task didFinishSuccessfully:(BOOL)successfully
+{
+
+}
+
+- (void)endRecognizer
+{
+    // END capture and END voice Reco
+    // or Apple will terminate this task after 30000ms.
+    [self endCapture];
+    [self.speechRequest endAudio];
+}
+
+- (void)startCapture
+{
     NSError *error;
-    _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:_audioRecorder.url
-                                                          error:&error];
-    _audioPlayer.delegate = self;
-    _audioPlayer.volume = 1.0;
-    if (error) {
-        NSLog(@"Error: %@", error.localizedDescription);
-    } else {
-        [_audioPlayer play];
+    self.capture = [[AVCaptureSession alloc] init];
+    [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio];
+    AVCaptureDevice *audioDev = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
+    if (audioDev == nil){
+        NSLog(@"Couldn't create audio capture device");
+        return ;
+    }
+
+    // create mic device
+    AVCaptureDeviceInput *audioIn = [AVCaptureDeviceInput deviceInputWithDevice:audioDev error:&error];
+    if (error != nil){
+        NSLog(@"Couldn't create audio input");
+        return ;
+    }
+
+    // add mic device in capture object
+    if ([self.capture canAddInput:audioIn] == NO){
+        NSLog(@"Couldn't add audio input");
+        return ;
+    }
+    [self.capture addInput:audioIn];
+    // export audio data
+    AVCaptureAudioDataOutput *audioOutput = [[AVCaptureAudioDataOutput alloc] init];
+    [audioOutput setSampleBufferDelegate:self queue:dispatch_get_main_queue()];
+    if ([self.capture canAddOutput:audioOutput] == NO){
+        NSLog(@"Couldn't add audio output");
+        return ;
+    }
+    [self.capture addOutput:audioOutput];
+    [audioOutput connectionWithMediaType:AVMediaTypeAudio];
+    [self.capture startRunning];
+}
+
+-(void)endCapture
+{
+    if (self.capture != nil && [self.capture isRunning]){
+        [self.capture stopRunning];
     }
 }
 
+- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
+{
+    [self.speechRequest appendAudioSampleBuffer:sampleBuffer];
+}
+
+//- (IBAction)playAudio:(id)sender {
+//    [self stopAudio];
+//    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+//    [audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
+//    NSError *error;
+//    _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:_audioRecorder.url
+//                                                          error:&error];
+//    _audioPlayer.delegate = self;
+//    _audioPlayer.volume = 1.0;
+//    if (error) {
+//        NSLog(@"Error: %@", error.localizedDescription);
+//    } else {
+//        [_audioPlayer play];
+//    }
+//}
+
 - (void)stopAudio {
+    [self endCapture];
+    [self endRecognizer];
+    
     if (_audioRecorder.recording) {
         [_audioRecorder stop];
     } else if (_audioPlayer.playing) {
@@ -154,9 +293,12 @@
     return _speechSynt;
 }
 
-- (void)speak:(NSString *)phrase
+- (void)speak:(NSString *)phrase in:(NSString *)language
 {
-    AVSpeechUtterance *sentence = [[AVSpeechUtterance alloc] initWithString:phrase];
+    AVSpeechUtterance *sentence   = [[AVSpeechUtterance alloc] initWithString:phrase];
+    AVSpeechSynthesisVoice *voice = [AVSpeechSynthesisVoice voiceWithLanguage:language];
+    sentence.voice = voice;
+
     [self.speechSynt speakUtterance:sentence];
 }
 
@@ -272,7 +414,8 @@
 - (IBAction)startRecording:(UIButton *)sender
 {
     [self showStartRecording];
-    [self recordAudio];
+    
+    [self recordAudio:[BFSettingsManager settings].yourLocale speakIn:[BFSettingsManager settings].myLocale];
 }
 
 - (IBAction)stopRecording:(UIButton *)sender
@@ -288,7 +431,7 @@
 - (IBAction)meStartRecording:(UIButton *)sender
 {
     [self showStartRecording];
-    [self recordAudio];
+    [self recordAudio:[BFSettingsManager settings].myLocale speakIn:[BFSettingsManager settings].yourLocale];
 }
 
 - (IBAction)meStopRecording:(UIButton *)sender
@@ -301,51 +444,69 @@
     [self makeMeWait];
 }
 
+- (AVAudioEngine *)audioEngine
+{
+    if(!_audioEngine) {
+        _audioEngine = [AVAudioEngine new];
+    }
+
+    return _audioEngine;
+}
+
 # pragma mark - Networking inside the view controller, like a boss
 
 - (void)processAudio:(NSString *)fromLanguage to:(NSString *)toLanguage
 {
-    //[self convertAudio];
-    NSString *service = @"https:/speech.googleapis.com/v1beta1/speech:syncrecognize";
-    service = [service stringByAppendingString:@"?key="];
-    service = [service stringByAppendingString:BFGoogleApiKey];
-    
-    NSData *audioData       = [NSData dataWithContentsOfFile:[self soundFilePath]];
-    
-    NSDictionary *configRequest = @{
-        @"encoding"         : @"LINEAR16",
-        @"sampleRate"       : @(BFAudioSampleRate),
-        @"languageCode"     : fromLanguage,
-        @"maxAlternatives"  : @30
-    };
-    
-    NSDictionary *audioRequest = @{
-        @"content" : [audioData base64EncodedStringWithOptions:0]
-    };
-    NSDictionary *requestDictionary = @{
-        @"config"   : configRequest,
-        @"audio"    : audioRequest
-    };
-    
-    NSError *error;
-    NSData *requestData = [NSJSONSerialization dataWithJSONObject:requestDictionary
-                                                          options:0
-                                                            error:&error];
 
-    [BFNetworkRequest postWithURL:service data:requestData handler:^(id response, NSError *error) {
-        if (!error && response) {
-//            [self process:response];
-            if(response) {
-                NSArray *alternatives = response[@"results"][0][@"alternatives"];
-                NSString *target = [(NSDictionary *)alternatives.firstObject objectForKey:@"transcript"];
-                [BFRecognitionRequest translatePhrase:target from:fromLanguage to:toLanguage handler:^(NSString *translatedPhrase) {
-                    [self speak:translatedPhrase];
-                }];
-            }
-        } else {
-            NSLog(@"ERROR: %@", error.localizedDescription);
-        }
-    }];
+
+    NSLocale *locale = [NSLocale localeWithLocaleIdentifier:fromLanguage];
+    SFSpeechRecognizer *recognizer = [[SFSpeechRecognizer alloc] initWithLocale:locale];
+    SFSpeechAudioBufferRecognitionRequest *request = [SFSpeechAudioBufferRecognitionRequest new];
+    SFSpeechRecognitionTask *task = [SFSpeechRecognitionTask new];
+    AVAudioEngine *audioEngine = [AVAudioEngine new];
+
+
+//    //[self convertAudio];
+//    NSString *service = @"https:/speech.googleapis.com/v1beta1/speech:syncrecognize";
+//    service = [service stringByAppendingString:@"?key="];
+//    service = [service stringByAppendingString:BFGoogleApiKey];
+//
+//    NSData *audioData       = [NSData dataWithContentsOfFile:[self soundFilePath]];
+//
+//    NSDictionary *configRequest = @{
+//        @"encoding"         : @"LINEAR16",
+//        @"sampleRate"       : @(BFAudioSampleRate),
+//        @"languageCode"     : fromLanguage,
+//        @"maxAlternatives"  : @30
+//    };
+//
+//    NSDictionary *audioRequest = @{
+//        @"content" : [audioData base64EncodedStringWithOptions:0]
+//    };
+//    NSDictionary *requestDictionary = @{
+//        @"config"   : configRequest,
+//        @"audio"    : audioRequest
+//    };
+//
+//    NSError *error;
+//    NSData *requestData = [NSJSONSerialization dataWithJSONObject:requestDictionary
+//                                                          options:0
+//                                                            error:&error];
+//
+//    [BFNetworkRequest postWithURL:service data:requestData handler:^(id response, NSError *error) {
+//        if (!error && response) {
+////            [self process:response];
+//            if(response) {
+//                NSArray *alternatives = response[@"results"][0][@"alternatives"];
+//                NSString *target = [(NSDictionary *)alternatives.firstObject objectForKey:@"transcript"];
+//                [BFRecognitionRequest translatePhrase:target from:fromLanguage to:toLanguage handler:^(NSString *translatedPhrase) {
+//                    [self speak:translatedPhrase in:toLanguage];
+//                }];
+//            }
+//        } else {
+//            NSLog(@"ERROR: %@", error.localizedDescription);
+//        }
+//    }];
 }
 
 - (void)process:(NSDictionary *)json
