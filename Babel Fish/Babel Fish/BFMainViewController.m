@@ -12,6 +12,7 @@
 #import "lame/lame.h"
 #import "BFSettingsManager.h"
 #import "BFRecognitionRequest.h"
+#import "SCSiriWaveformView.h"
 
 @interface BFMainViewController () <AVAudioRecorderDelegate, AVAudioPlayerDelegate>
 @property (strong, nonatomic) AVAudioRecorder *audioRecorder;
@@ -23,6 +24,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *meTalkButton;
 @property (weak, nonatomic) IBOutlet UIView *activityView;
 @property (weak, nonatomic) IBOutlet UIView *recordingView;
+@property (strong, nonatomic) SCSiriWaveformView *waveform;
+@property (strong, nonatomic) NSTimer *waveTimer;
+
 @end
 
 @implementation BFMainViewController
@@ -215,7 +219,15 @@
     [self.activitySpinner setHidden:YES];
     self.statusLabel.text = @"";
     self.recordingView.alpha = 0;
-    self.recordingView.backgroundColor = [UIColor greenColor];
+    self.recordingView.backgroundColor = [UIColor clearColor];
+    
+    
+    self.waveform = [[SCSiriWaveformView alloc] initWithFrame:self.recordingView.bounds];
+    self.waveform.alpha = 0.5;
+    [self.waveform setBackgroundColor:[UIColor clearColor]];
+    [self.waveform setWaveColor:[UIColor darkGrayColor]];
+    [self.recordingView addSubview:self.waveform];
+    
 }
 
 - (void)makeMeWait
@@ -230,6 +242,8 @@
                      }];
     
     self.activitySpinner.hidden = NO;
+    [self.waveTimer invalidate];
+    self.waveTimer = nil;
 }
 
 - (void)makeThemWait
@@ -245,6 +259,7 @@
                      }];
     
     self.activitySpinner.hidden = NO;
+    [self.waveTimer invalidate];
 }
 
 - (void)stopWaiting
@@ -256,7 +271,28 @@
                      animations:^{
                          self.statusLabel.alpha = 0;
                      }];
+}
+
+- (void)tick:(NSTimer*)timer
+{
+    static CGFloat lastValue = 0.5;
+    static CGFloat direction = -1;
+    CGFloat randval = ((float)(rand()%2000))/8000.0;
     
+    if(randval < 0.05)
+    {
+        direction *= -1;
+        NSLog(@"swithing randomly");
+    }
+    if(direction * randval + lastValue < 0 || direction * randval + lastValue > 1 )
+    {
+        direction *= -1;
+        NSLog(@"swithing at limit");
+    }
+    lastValue += direction * randval;
+    
+    NSLog(@"dance %f",randval);
+    [self.waveform updateWithLevel:lastValue];
 }
 
 - (void)showStartRecording
@@ -265,6 +301,8 @@
                      animations:^{
                          self.recordingView.alpha = 1;
                      }];
+    
+    self.waveTimer = [NSTimer scheduledTimerWithTimeInterval:0.025 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
 }
 
 # pragma mark - Actions
@@ -339,6 +377,7 @@
                 NSArray *alternatives = response[@"results"][0][@"alternatives"];
                 NSString *target = [(NSDictionary *)alternatives.firstObject objectForKey:@"transcript"];
                 [BFRecognitionRequest translatePhrase:target from:fromLanguage to:toLanguage handler:^(NSString *translatedPhrase) {
+                    [self stopWaiting];
                     [self speak:translatedPhrase];
                 }];
             }
@@ -354,7 +393,6 @@
         NSArray *alternatives = json[@"results"][0][@"alternatives"];
         NSString *target = [(NSDictionary *)alternatives.firstObject objectForKey:@"transcript"];
         
-        [self stopWaiting];
         self.currentPhrase = target;
     }
 }

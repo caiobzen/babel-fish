@@ -18,6 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="Vlh-VL-Snw">
+                                <frame key="frameInset"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hwy-GH-LsV">
+                                <frame key="frameInset" minY="261" maxY="186"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CzG-9N-iUW">
                                 <frame key="frameInset" minX="41" minY="261" maxX="44" maxY="186"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,21 +44,16 @@
                                         <color key="backgroundColor" white="0.23782504560000001" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </activityIndicatorView>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hwy-GH-LsV">
-                                        <frame key="frameInset"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zWD-Ms-Ttb">
-                                <frame key="frameInset" minX="51" height="150" maxX="52" maxY="20"/>
+                                <frame key="frameInset" minX="51" height="72" maxX="52" maxY="20"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="HOLD TO TALK"/>
+                                <state key="normal" title="HOLD TO TALK" backgroundImage="meButton"/>
                                 <connections>
                                     <action selector="meStartRecording:" destination="BYZ-38-t0r" eventType="touchDown" id="zib-F5-dfm"/>
                                     <action selector="meStopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bKt-Q5-gTX"/>
@@ -57,12 +61,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tqq-hg-XVG">
-                                <frame key="frameInset" minX="51" minY="94" height="150" maxX="52"/>
+                                <frame key="frameInset" minX="51" minY="94" height="72" maxX="52"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="HOLD TO TALK"/>
+                                <state key="normal" title="HOLD TO TALK" backgroundImage="otherButton"/>
                                 <connections>
                                     <action selector="startRecording:" destination="BYZ-38-t0r" eventType="touchDown" id="uFA-as-M17"/>
                                     <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iUS-aQ-ibM"/>
@@ -153,4 +157,9 @@
             <point key="canvasLocation" x="24.800000000000001" y="35.532233883058474"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Background" width="16" height="16"/>
+        <image name="meButton" width="16" height="16"/>
+        <image name="otherButton" width="16" height="16"/>
+    </resources>
 </document>
