@@ -14,4 +14,6 @@
 
 + (instancetype)settings;
 
++ (NSString *)languageForLocale:(NSString *)locale;
+
 @end

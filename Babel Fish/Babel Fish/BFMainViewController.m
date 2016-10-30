@@ -24,11 +24,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activitySpinner;
 @property (weak, nonatomic) IBOutlet UIButton *otherTalkButton;
+@property (weak, nonatomic) IBOutlet UILabel *otherLangLabel;
+@property (weak, nonatomic) IBOutlet UILabel *meLangLabel;
 @property (weak, nonatomic) IBOutlet UIButton *meTalkButton;
 @property (weak, nonatomic) IBOutlet UIView *activityView;
 @property (weak, nonatomic) IBOutlet UIView *recordingView;
 @property (strong, nonatomic) SCSiriWaveformView *waveform;
-@property (strong, nonatomic) NSTimer *waveTimer;
+@property (strong, nonatomic) CADisplayLink *waveDisplayLink;
 
 @end
 
@@ -41,6 +43,13 @@
 
     [self prepareRecord];
     [self roundSomeCorners];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.otherLangLabel.text = [BFSettingsManager languageForLocale:[BFSettingsManager settings].yourLocale];
+    self.meLangLabel.text = [BFSettingsManager languageForLocale:[BFSettingsManager settings].myLocale];
 }
 
 - (void)prepareRecord {
@@ -60,6 +69,10 @@
             SFSpeechRecognizer *sf =[[SFSpeechRecognizer alloc] initWithLocale:local];
             welf.speechRequest = [[SFSpeechAudioBufferRecognitionRequest alloc] init];
             [sf recognitionTaskWithRequest:welf.speechRequest resultHandler:^(SFSpeechRecognitionResult * _Nullable result, NSError * _Nullable error) {
+                
+                if(error) {
+                    [welf stopWaiting];
+                }
                 
                 if(result.isFinal) {
                     NSLog(@"%@", result.bestTranscription.formattedString);
@@ -164,7 +177,8 @@
 {
     self.activitySpinner.layer.cornerRadius = 8;
     self.otherTalkButton.layer.cornerRadius = 15;
-    self.otherTalkButton.transform = CGAffineTransformMakeRotation(M_PI);    
+    self.otherTalkButton.transform = CGAffineTransformMakeRotation(M_PI);
+    self.otherLangLabel.transform = CGAffineTransformMakeRotation(M_PI);
     self.meTalkButton.layer.cornerRadius = 15;
     
     [self.activitySpinner startAnimating];
@@ -179,7 +193,6 @@
     [self.waveform setBackgroundColor:[UIColor clearColor]];
     [self.waveform setWaveColor:[UIColor darkGrayColor]];
     [self.recordingView addSubview:self.waveform];
-    
 }
 
 - (void)makeMeWait
@@ -194,8 +207,8 @@
                      }];
     
     self.activitySpinner.hidden = NO;
-    [self.waveTimer invalidate];
-    self.waveTimer = nil;
+    [self.waveDisplayLink invalidate];
+    self.waveDisplayLink = nil;
 }
 
 - (void)makeThemWait
@@ -211,7 +224,7 @@
                      }];
     
     self.activitySpinner.hidden = NO;
-    [self.waveTimer invalidate];
+    [self.waveDisplayLink invalidate];
 }
 
 - (void)stopWaiting
@@ -225,7 +238,7 @@
                      }];
 }
 
-- (void)tick:(NSTimer*)timer
+- (void)tick
 {
     static CGFloat lastValue = 0.5;
     static CGFloat direction = -1;
@@ -254,7 +267,9 @@
                          self.recordingView.alpha = 1;
                      }];
     
-    self.waveTimer = [NSTimer scheduledTimerWithTimeInterval:0.025 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
+    self.waveDisplayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(tick)];
+    [self.waveDisplayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    //[NSTimer scheduledTimerWithTimeInterval:0.025 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
 }
 
 # pragma mark - Actions
